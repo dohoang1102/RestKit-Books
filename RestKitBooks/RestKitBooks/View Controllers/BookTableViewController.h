@@ -10,7 +10,7 @@
 #import "RestKit.h"
 #import "RKFetchedResultsTableController.h"
 
-@interface BookTableViewController : UITableViewController<RKFetchedResultsTableControllerDelegate>
+@interface BookTableViewController : UITableViewController<RKFetchedResultsTableControllerDelegate, RKObjectLoaderDelegate>
 
 @property (nonatomic, retain) RKFetchedResultsTableController *fetchedResultsTableController;
 

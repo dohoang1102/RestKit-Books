@@ -2,7 +2,7 @@
 //  Book.h
 //  RestKitBooks
 //
-//  Created by John Ryan on 7/27/12.
+//  Created by John Ryan on 7/30/12.
 //  Copyright (c) 2012 Arturia. All rights reserved.
 //
 
@@ -12,7 +12,7 @@
 
 @interface Book : NSManagedObject
 
-@property (nonatomic, retain) NSString * bookName;
 @property (nonatomic, retain) NSNumber * bookID;
+@property (nonatomic, retain) NSString * bookTitle;
 
 @end

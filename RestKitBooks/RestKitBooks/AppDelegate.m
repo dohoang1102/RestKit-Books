@@ -20,16 +20,34 @@
     // Enable Logging
     RKLogConfigureByName("RestKit/Network", RKLogLevelDebug);
     
-    RKObjectManager* objectManager = [RKObjectManager managerWithBaseURLString:@"http://localhost:3000/"];
+    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURLString:@"http://localhost:3000"];
+    
+    /*
+     * Set up the object mapping provider.  This is a singleton that can always be accessed with
+     * [[RKObjectManager sharedManager] mappingProvider]
+     */
+    RKObjectMappingProvider *objectMappingProvider = [[RKObjectMappingProvider alloc] init];
 
-    RKObjectMapping *bookMapping = [RKObjectMapping mappingForClass:[Book class]];
+    [[RKObjectManager sharedManager] setMappingProvider:objectMappingProvider];
+    
+    /*
+     * Tell RestKit about our database; i.e. 'object store'
+     */
+    RKManagedObjectStore *objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"RestKitBooks.sqlite"];
+    [objectManager setObjectStore:objectStore];
+    
+    RKObjectMapping *bookMapping = [RKManagedObjectMapping mappingForClass:[Book class] inManagedObjectStore:objectStore];
     [bookMapping setRootKeyPath:@"book"];
     [bookMapping mapKeyPathsToAttributes:
     @"id", @"bookID",
     @"title", @"bookTitle",
     nil];
     
+//    [objectManager.mappingProvider setMapping:bookMapping forKeyPath:@"books"];
     [objectManager.mappingProvider setObjectMapping:bookMapping forKeyPath:@"book"];
+    [RKObjectManager setSharedManager:objectManager];
+
+
     
     return YES;
 }
