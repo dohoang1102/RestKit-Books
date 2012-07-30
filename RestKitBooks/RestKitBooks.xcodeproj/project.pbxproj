@@ -20,6 +20,9 @@
 		1B956BC315C2C4630062D1C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B956BA115C2C4630062D1C7 /* Foundation.framework */; };
 		1B956BCB15C2C4630062D1C7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B956BC915C2C4630062D1C7 /* InfoPlist.strings */; };
 		1B956BCE15C2C4630062D1C7 /* RestKitBooksTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B956BCD15C2C4630062D1C7 /* RestKitBooksTests.m */; };
+		1BD5394015C2D21000C9127E /* BooksModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1BD5393E15C2D21000C9127E /* BooksModel.xcdatamodeld */; };
+		1BD5394715C2D2DF00C9127E /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD5394615C2D2DF00C9127E /* Book.m */; };
+		1BD5394F15C2D3C700C9127E /* BookTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD5394E15C2D3C700C9127E /* BookTableViewController.m */; };
 		C976CEC51AD64FFFAD1407B5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 557FBB90B145464394960F67 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +55,11 @@
 		1B956BCA15C2C4630062D1C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1B956BCC15C2C4630062D1C7 /* RestKitBooksTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RestKitBooksTests.h; sourceTree = "<group>"; };
 		1B956BCD15C2C4630062D1C7 /* RestKitBooksTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RestKitBooksTests.m; sourceTree = "<group>"; };
+		1BD5393F15C2D21000C9127E /* BooksModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BooksModel.xcdatamodel; sourceTree = "<group>"; };
+		1BD5394515C2D2DF00C9127E /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Book.h; path = Model/Book.h; sourceTree = "<group>"; };
+		1BD5394615C2D2DF00C9127E /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Book.m; path = Model/Book.m; sourceTree = "<group>"; };
+		1BD5394D15C2D3C700C9127E /* BookTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookTableViewController.h; path = "View Controllers/BookTableViewController.h"; sourceTree = "<group>"; };
+		1BD5394E15C2D3C700C9127E /* BookTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BookTableViewController.m; path = "View Controllers/BookTableViewController.m"; sourceTree = "<group>"; };
 		557FBB90B145464394960F67 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF40153FCE4D4312847C648C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -116,8 +124,11 @@
 		1B956BA515C2C4630062D1C7 /* RestKitBooks */ = {
 			isa = PBXGroup;
 			children = (
+				1BD5394C15C2D39C00C9127E /* View Controllers */,
+				1BD5394115C2D28400C9127E /* Model */,
 				1B956BAE15C2C4630062D1C7 /* AppDelegate.h */,
 				1B956BAF15C2C4630062D1C7 /* AppDelegate.m */,
+				1BD5393E15C2D21000C9127E /* BooksModel.xcdatamodeld */,
 				1B956BB115C2C4630062D1C7 /* MainStoryboard_iPhone.storyboard */,
 				1B956BB415C2C4630062D1C7 /* MainStoryboard_iPad.storyboard */,
 				1B956BA615C2C4630062D1C7 /* Supporting Files */,
@@ -153,6 +164,24 @@
 				1B956BC915C2C4630062D1C7 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1BD5394115C2D28400C9127E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1BD5394515C2D2DF00C9127E /* Book.h */,
+				1BD5394615C2D2DF00C9127E /* Book.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		1BD5394C15C2D39C00C9127E /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1BD5394D15C2D3C700C9127E /* BookTableViewController.h */,
+				1BD5394E15C2D3C700C9127E /* BookTableViewController.m */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +309,9 @@
 			files = (
 				1B956BAC15C2C4630062D1C7 /* main.m in Sources */,
 				1B956BB015C2C4630062D1C7 /* AppDelegate.m in Sources */,
+				1BD5394015C2D21000C9127E /* BooksModel.xcdatamodeld in Sources */,
+				1BD5394715C2D2DF00C9127E /* Book.m in Sources */,
+				1BD5394F15C2D3C700C9127E /* BookTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +505,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1BD5393E15C2D21000C9127E /* BooksModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1BD5393F15C2D21000C9127E /* BooksModel.xcdatamodel */,
+			);
+			currentVersion = 1BD5393F15C2D21000C9127E /* BooksModel.xcdatamodel */;
+			path = BooksModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1B956B9215C2C4630062D1C7 /* Project object */;
 }
