@@ -10,47 +10,32 @@
 #import "RestKit.h"
 #import "CoreData.h"
 #import "Book.h"
+#import "BookMappingProvider.h"
+
+@interface AppDelegate ()
+@property (nonatomic, strong, readwrite) RKObjectManager *objectManager;
+@property (nonatomic, strong, readwrite) RKManagedObjectStore *objectStore;
+@end
 
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize objectManager;
+@synthesize objectStore;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Enable Logging
-    RKLogConfigureByName("RestKit/Network", RKLogLevelDebug);
-    
-    RKObjectManager *objectManager = [RKObjectManager managerWithBaseURLString:@"http://localhost:3000"];
-    
-    /*
-     * Set up the object mapping provider.  This is a singleton that can always be accessed with
-     * [[RKObjectManager sharedManager] mappingProvider]
-     */
-    RKObjectMappingProvider *objectMappingProvider = [[RKObjectMappingProvider alloc] init];
-
-    [[RKObjectManager sharedManager] setMappingProvider:objectMappingProvider];
-    
-    /*
-     * Tell RestKit about our database; i.e. 'object store'
-     */
-    RKManagedObjectStore *objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"RestKitBooks.sqlite"];
-    [objectManager setObjectStore:objectStore];
-    
-    RKObjectMapping *bookMapping = [RKManagedObjectMapping mappingForClass:[Book class] inManagedObjectStore:objectStore];
-    [bookMapping setRootKeyPath:@"book"];
-    [bookMapping mapKeyPathsToAttributes:
-    @"id", @"bookID",
-    @"title", @"bookTitle",
-    nil];
-    
-//    [objectManager.mappingProvider setMapping:bookMapping forKeyPath:@"books"];
-    [objectManager.mappingProvider setObjectMapping:bookMapping forKeyPath:@"book"];
-    [RKObjectManager setSharedManager:objectManager];
-
-
+    [self initializeRestKit];
     
     return YES;
 }
 
+- (void)initializeRestKit
+{
+    self.objectManager = [RKObjectManager managerWithBaseURLString:@"http://localhost:3000"];
+    self.objectStore = [RKManagedObjectStore objectStoreWithStoreFilename:@"RestKitBooks.sqlite"];
+    self.objectManager.objectStore = self.objectStore;
+    self.objectManager.mappingProvider = [BookMappingProvider mappingProviderWithObjectStore:self.objectStore];
+}
 
 @end
