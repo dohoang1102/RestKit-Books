@@ -19,19 +19,48 @@
 @synthesize titleLabel = _titleLabel;
 @synthesize book = _book;
 
-//- (void) setBook:(Book *)book
-//{
-//    [self.titleLabel setText:book.bookTitle];
-//}
-
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    if(self.book) {
-        [self.titleLabel setText:self.book.bookTitle];
-    }else{
-        NSLog(@"no book");
-    }
+    [self configureTitleBar];
 }
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self updateInterface];
+}
+
+- (void)configureTitleBar
+{
+    // Configure the title, title bar, and table view.
+    self.title = @"Info";
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)updateInterface
+{
+    [self.titleLabel setText:self.book.bookTitle];
+}
+
+#pragma mark editing nonsense.
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    
+    // Hide the back button when editing starts, and show it again when editing finishes.
+    [self.navigationItem setHidesBackButton:editing animated:animated];
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleNone;
+}
+
 @end
