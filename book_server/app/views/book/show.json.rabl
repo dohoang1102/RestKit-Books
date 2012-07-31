@@ -1,2 +1,2 @@
 object @book
-attributes :id, :title
+attributes :id, :title, :created_at, :updated_at

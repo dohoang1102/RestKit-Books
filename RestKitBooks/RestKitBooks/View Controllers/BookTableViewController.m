@@ -7,12 +7,15 @@
 //
 
 #import "BookTableViewController.h"
-
+#import "BookDetailViewController.h"
 @interface BookTableViewController ()
 
 @end
 
 @implementation BookTableViewController
+{
+    NSIndexPath *currentIndexPath;
+}
 
 @synthesize tableController = _tableController;
 
@@ -30,6 +33,8 @@
     [super viewDidLoad];
     
     self.tableController = [[RKObjectManager sharedManager] fetchedResultsTableControllerForTableViewController:self];
+    // This allows us to have a relevant tableView reference for getting the index path and such.
+    self.tableView = [self.tableController tableView];
     
     self.tableController.resourcePath = @"/books";
     self.tableController.autoRefreshFromNetwork = YES;
@@ -42,11 +47,29 @@
     [cellMapping mapKeyPath:@"bookTitle" toAttribute:@"textLabel.text"];
     cellMapping.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cellMapping.onSelectCell = ^(){
+        
+    };
+    
+    cellMapping.onSelectCellForObjectAtIndexPath = ^(UITableViewCell *cell, id object, NSIndexPath *indexPath){
+        // we need to access the indexPath in prepareForSegue
+        currentIndexPath = indexPath;
         [self performSegueWithIdentifier:@"Display Book Details" sender:self];
+        
     };
     
     [self.tableController mapObjectsWithClass:[Book class] toTableCellsWithMapping:cellMapping];
     
     [self.tableController loadTable];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([[segue identifier] isEqualToString:@"Display Book Details"]) {
+        Book *selectedBook = [self.tableController objectForRowAtIndexPath:currentIndexPath];
+        
+        // Pass the selected book to the new view controller.
+        BookDetailViewController *detailViewController = (BookDetailViewController *)[segue destinationViewController];
+        detailViewController.book = selectedBook;
+    }
 }
 @end

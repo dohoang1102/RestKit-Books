@@ -24,6 +24,7 @@
 		1BD5394F15C2D3C700C9127E /* BookTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD5394E15C2D3C700C9127E /* BookTableViewController.m */; };
 		524A334E15C6D1C90064383A /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 524A334D15C6D1C90064383A /* Book.m */; };
 		524A33AC15C800540064383A /* BookMappingProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 524A33AB15C800540064383A /* BookMappingProvider.m */; };
+		524A33E915C827FD0064383A /* BookDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 524A33E815C827FD0064383A /* BookDetailViewController.m */; };
 		C976CEC51AD64FFFAD1407B5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 557FBB90B145464394960F67 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,8 @@
 		524A334D15C6D1C90064383A /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Book.m; path = Model/Book.m; sourceTree = "<group>"; };
 		524A33AA15C800540064383A /* BookMappingProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookMappingProvider.h; sourceTree = "<group>"; };
 		524A33AB15C800540064383A /* BookMappingProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookMappingProvider.m; sourceTree = "<group>"; };
+		524A33E715C827FD0064383A /* BookDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookDetailViewController.h; path = "View Controllers/BookDetailViewController.h"; sourceTree = "<group>"; };
+		524A33E815C827FD0064383A /* BookDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BookDetailViewController.m; path = "View Controllers/BookDetailViewController.m"; sourceTree = "<group>"; };
 		557FBB90B145464394960F67 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF40153FCE4D4312847C648C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -185,6 +188,8 @@
 			children = (
 				1BD5394D15C2D3C700C9127E /* BookTableViewController.h */,
 				1BD5394E15C2D3C700C9127E /* BookTableViewController.m */,
+				524A33E715C827FD0064383A /* BookDetailViewController.h */,
+				524A33E815C827FD0064383A /* BookDetailViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -318,6 +323,7 @@
 				1BD5394F15C2D3C700C9127E /* BookTableViewController.m in Sources */,
 				524A334E15C6D1C90064383A /* Book.m in Sources */,
 				524A33AC15C800540064383A /* BookMappingProvider.m in Sources */,
+				524A33E915C827FD0064383A /* BookDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

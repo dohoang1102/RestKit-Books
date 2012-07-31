@@ -143,6 +143,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="yQc-zZ-TIe"/>
+                    <connections>
+                        <outlet property="titleLabel" destination="vkf-CR-koi" id="ZoX-ER-D2y"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="403" y="280"/>
@@ -167,6 +170,12 @@
         </scene>
     </scenes>
     <classes>
+        <class className="BookDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BookDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
         <class className="BookTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BookTableViewController.h"/>
         </class>
